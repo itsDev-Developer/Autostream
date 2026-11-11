@@ -1,0 +1,25 @@
+# docker compose up -d --build
+# One container = one channel. To run several channels, copy this service with its own STREAM_URLS and volume.
+services:
+  flappy-challenge:
+    build: .
+    restart: unless-stopped          # auto-restart on crash / reboot; state is kept in the volume
+    environment:
+      STREAM_URLS: "rtmp://a.rtmp.youtube.com/live2/YOUR_YOUTUBE_KEY"   # add ,rtmps://... to also stream to Kick
+      PROFILE: medium                # low | medium | high | ultra
+      GAMES: "flappy,racing,blocks"
+      GOALS: "flappy=60000:total,racing=200000:total,blocks=2000000:total"
+      SKILL: "1"                     # 0..1 player precision (1 = steady, 0.6 = casual)
+      MISTAKE: "0"                   # 0 = no extra deliberate slips
+      DURATION_HOURS: "24"
+      TITLE: "24H CHALLENGE"
+    volumes:
+      - autostream-data:/data
+    ports:
+      - "8000:8000"                  # /health  /metrics  / (JSON status)
+    deploy:
+      resources:
+        limits: { cpus: "1.5", memory: 512M }
+
+volumes:
+  autostream-data:

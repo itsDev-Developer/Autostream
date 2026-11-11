@@ -1,0 +1,17 @@
+{
+  "urls": [
+    "rtmp://a.rtmp.youtube.com/live2/YOUR_KEY"
+  ],
+  "games": "flappy,racing,blocks",
+  "goals": {
+    "flappy": "60000:total",
+    "racing": "200000:total",
+    "blocks": "2000000:total"
+  },
+  "mistake": "0",
+  "duration": 24,
+  "title": "24H CHALLENGE",
+  "profile": "medium",
+  "volume": 0.5,
+  "skill": 1
+}

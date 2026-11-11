@@ -1,0 +1,7 @@
+state/
+cache/
+tests/
+*.mp4
+shots/
+__pycache__/
+*.pyc
